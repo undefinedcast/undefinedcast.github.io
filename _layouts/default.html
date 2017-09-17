@@ -110,7 +110,7 @@
     audio.addEventListener("pause", function() {
       gtag('event', 'episode_play', {
         'episode_title': audio.name
-        // 'duration': audio.duration,
+        'pause_at': audio.currentTime,
       });
     }, {
       once: true
