@@ -109,8 +109,8 @@
     });
     audio.addEventListener("pause", function() {
       gtag('event', 'episode_play', {
-        'episode_title': audio.name
-        'pause_at': audio.currentTime,
+        'episode_title': audio.name,
+        'pause_at': audio.currentTime
       });
     }, {
       once: true
