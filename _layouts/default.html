@@ -108,9 +108,16 @@
       once: true
     });
     audioes[i].addEventListener("pause", function() {
-      gtag('event', 'episode_play', {
+      gtag('event', 'episode_pause', {
         'episode_title': audioes[i].getAttribute("name"),
         'pause_at': audioes[i].currentTime
+      });
+    }, {
+      once: true
+    });
+    audioes[i].addEventListener("ended", function() {
+      gtag('event', 'episode_ended', {
+        'episode_title': audioes[i].getAttribute("name")
       });
     }, {
       once: true
