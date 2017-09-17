@@ -68,12 +68,12 @@
       <!-- {{ content }} -->
       <h1>Episodes</h1>
       <div>
-        <h3>EP00 - จุดเริ่มต้นของ Undefined Cast (4:52 นาที)</h3>
-        <audio preload="metadata" controls="controls" src="https://raw.githubusercontent.com/undefinedcast/undefinedcast.github.io/master/podcast-episodes/EP00.m4a"></audio>
-        <br>
-        <br>
         <h3>EP01 - หรือผีจะไม่มีเหตุผล? (31:18 นาที)</h3>
-        <audio preload="metadata" controls="controls" src="https://raw.githubusercontent.com/undefinedcast/undefinedcast.github.io/master/podcast-episodes/EP01.m4a"></audio>
+        <audio name="EP01 - หรือผีจะไม่มีเหตุผล?" preload="metadata" controls="controls" src="https://raw.githubusercontent.com/undefinedcast/undefinedcast.github.io/master/podcast-episodes/EP01.m4a"></audio>
+        <br>
+        <br>
+        <h3>EP00 - จุดเริ่มต้นของ Undefined Cast (4:52 นาที)</h3>
+        <audio name="EP00 - จุดเริ่มต้นของ Undefined Cast" preload="metadata" controls="controls" src="https://raw.githubusercontent.com/undefinedcast/undefinedcast.github.io/master/podcast-episodes/EP00.m4a"></audio>
       </div>
       </section>
       <footer>
@@ -96,5 +96,26 @@
         ga('send', 'pageview');
     </script>
   {% endif %}
+  <script>
+  var audioes = document.getElementsByTagName("audio");
+  for (var audio in audioes) {
+    audio.addEventListener("playing", function() {
+      gtag('event', 'episode_play', {
+        'episode_title': audio.name
+        // 'duration': audio.duration,
+      });
+    }, {
+      once: true
+    });
+    audio.addEventListener("pause", function() {
+      gtag('event', 'episode_play', {
+        'episode_title': audio.name
+        // 'duration': audio.duration,
+      });
+    }, {
+      once: true
+    });
+  }
+  </script>
   </body>
 </html>
