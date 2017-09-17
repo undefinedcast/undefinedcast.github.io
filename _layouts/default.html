@@ -97,20 +97,20 @@
     </script>
   {% endif %}
   <script>
-  var audioes = document.getElementsByTagName("audio");
-  for (var audio in audioes) {
-    audio.addEventListener("playing", function() {
+  let audioes = document.getElementsByTagName("audio");
+  for (let i = 0; i < audioes.length; i++) {
+    audioes[i].addEventListener("playing", function() {
       gtag('event', 'episode_play', {
-        'episode_title': audio.name
+        'episode_title': audioes[i].getAttribute("name")
         // 'duration': audio.duration,
       });
     }, {
       once: true
     });
-    audio.addEventListener("pause", function() {
+    audioes[i].addEventListener("pause", function() {
       gtag('event', 'episode_play', {
-        'episode_title': audio.name,
-        'pause_at': audio.currentTime
+        'episode_title': audioes[i].getAttribute("name"),
+        'pause_at': audioes[i].currentTime
       });
     }, {
       once: true
